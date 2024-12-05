@@ -1,36 +1,33 @@
-import { View, Text, Button } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DetailsScreen from './rsc/Screens/DetailsScreen';
+import HomeScreen from './rsc/Screens/HomeScreen';
+import HaqanScreen from './rsc/Screens/HaqanScreen';
 
-const Lifecycledemo = () => {
-  const [count,setCount]=useState(0);
-  const [message,setMessage]=useState('');
 
-  //mounting Component
-  useEffect
-  (
-    ()=>{
-    console.log("component mounted")
-    //unmounting
-    return()=>{ console.warn("Component Unmounted")}
-       }, []
-  )
-  //updation
-  useEffect
-  ( ()=>{
-    console.log(`Count updated to: ${count}`)
-    console.log(`Message updated to: ${message}`)
-  }, [message,count]
-    
-  )
+const Stack = createNativeStackNavigator();
 
+function RootStack() {
   return (
-    <View>
-      <Text>CountL {count}</Text>
-      <Text>Messag :{message}</Text>
-      <Button title='increment count' onPress={()=>setCount(count+1)}/>
-      <Button title='Message Updation' onPress={()=>setMessage(" Message changed")}/>
-    </View>
-  )
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerStyle: { backgroundColor: 'tomato' },
+      }}
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="Haqan" component={HaqanScreen} />
+    </Stack.Navigator>
+  );
 }
 
-export default Lifecycledemo
+export default function App() {
+  return (
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
+  );
+}
