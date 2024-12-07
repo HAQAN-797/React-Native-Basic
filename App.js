@@ -2,24 +2,21 @@ import * as React from 'react';
 import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RegistrationScreen from './rsc/Screens/RegistrationScreen';
 import DetailsScreen from './rsc/Screens/DetailsScreen';
-import HomeScreen from './rsc/Screens/HomeScreen';
-import HaqanScreen from './rsc/Screens/HaqanScreen';
-
 
 const Stack = createNativeStackNavigator();
-
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Registration"
       screenOptions={{
-        headerStyle: { backgroundColor: 'tomato' },
+        headerStyle: { backgroundColor: 'green' },
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
+     <Stack.Screen name="Registration" component={RegistrationScreen} />
       <Stack.Screen name="Details" component={DetailsScreen} />
-      <Stack.Screen name="Haqan" component={HaqanScreen} />
+
     </Stack.Navigator>
   );
 }
