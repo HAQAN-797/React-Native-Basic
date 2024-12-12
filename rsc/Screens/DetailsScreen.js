@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-
+import HeaderComp from '../components/HeaderComponents';
 const DetailsScreen = ({ route }) => {
-  const { imagepath, webimage, name, registrationNumber, cnic } = route.params;
-
+  const { localImage, webimage, name, registrationNumber, cnic } = route.params;
+     console.log("web image running",webimage)
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      
+
       <Text style={styles.label}>Name:</Text>
       <Text style={styles.value}>{name}</Text>
 
@@ -18,14 +18,14 @@ const DetailsScreen = ({ route }) => {
 
       <Text style={styles.label}>Local Image:</Text>
       <Image
-        source={{ uri: imagepath }}
+        source={localImage}  // Use require path directly for local image
         style={styles.image}
         resizeMode="contain"
       />
 
       <Text style={styles.label}>Web Image:</Text>
       <Image
-        source={{ uri: webimage }}
+        source={{ uri: webimage }}  // Remote image (web URL)
         style={styles.image}
         resizeMode="contain"
       />

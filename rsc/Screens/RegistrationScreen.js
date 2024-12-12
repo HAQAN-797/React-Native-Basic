@@ -3,23 +3,23 @@ import { View, Text, TextInput, Button, Alert, ScrollView, StyleSheet, Image } f
 import { useNavigation } from '@react-navigation/native';
 
 const RegistrationScreen = () => {
-  const [imagePath, setImagePath] = useState('');
   const [webimage, setWebimage] = useState('');
   const [name, setName] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [cnic, setCnic] = useState('');
   const navigation = useNavigation();
+  const localImage = require('../assets/Images/images.png');  // Static image for local use
 
   const handleSubmit = () => {
-    if (!name || !registrationNumber || !cnic || !imagePath || !webimage) {
+    if (!name || !registrationNumber || !cnic || !webimage) {
       Alert.alert('Validation Error', 'All fields are required!');
       return;
     }
-
+         
     // Navigate to the Details screen and pass data as parameters
     navigation.navigate('Details', {
-      imagePath,
-      webimage,
+      localImage,    // Pass local image as a require path
+      webimage,      // URL for web image
       name,
       registrationNumber,
       cnic,
@@ -27,19 +27,10 @@ const RegistrationScreen = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-       <View style={styles.inputContainer}>
-        <Image source={require('../assets/Images/images.png')}/>
-        <Text style={styles.label}>Relative Image Path:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter image path (e.g., myImage.png)"
-          onChangeText={setImagePath}
-          value={imagePath}
-        />
-      </View>
-      <View></View>
-            <View style={styles.inputContainer}>
+    <ScrollView contentContainerStyle={styles.container}>-
+      
+
+      <View style={styles.inputContainer}>
         <Text style={styles.label}>Web Image URL:</Text>
         <TextInput
           style={styles.input}
@@ -48,6 +39,7 @@ const RegistrationScreen = () => {
           value={webimage}
         />
       </View>
+
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Name:</Text>
         <TextInput
@@ -103,6 +95,11 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 16,
     backgroundColor: '#f9f9f9',
+  },
+  image: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
   },
 });
 
