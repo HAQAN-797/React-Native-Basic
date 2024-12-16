@@ -1,56 +1,12 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import HeaderComp from '../components/HeaderComponents';
-const DetailsScreen = ({ route }) => {
-  const { localImage, webimage, name, registrationNumber, cnic } = route.params;
-     console.log("web image running",webimage)
+import { View, Text } from 'react-native'
+import React from 'react'
+
+const DetailsScreen = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View>
+      <Text>DetailsScreen</Text>
+    </View>
+  )
+}
 
-      <Text style={styles.label}>Name:</Text>
-      <Text style={styles.value}>{name}</Text>
-
-      <Text style={styles.label}>Registration Number:</Text>
-      <Text style={styles.value}>{registrationNumber}</Text>
-
-      <Text style={styles.label}>CNIC:</Text>
-      <Text style={styles.value}>{cnic}</Text>
-
-      <Text style={styles.label}>Local Image:</Text>
-      <Image
-        source={localImage}  // Use require path directly for local image
-        style={styles.image}
-        resizeMode="contain"
-      />
-
-      <Text style={styles.label}>Web Image:</Text>
-      <Image
-        source={{ uri: webimage }}  // Remote image (web URL)
-        style={styles.image}
-        resizeMode="contain"
-      />
-    </ScrollView>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  label: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  value: {
-    marginBottom: 15,
-    fontSize: 16,
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    marginBottom: 20,
-  },
-});
-
-export default DetailsScreen;
+export default DetailsScreen

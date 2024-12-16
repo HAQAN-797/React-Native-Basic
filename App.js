@@ -1,30 +1,25 @@
-import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import RegistrationScreen from './rsc/Screens/RegistrationScreen';
 import DetailsScreen from './rsc/Screens/DetailsScreen';
-import 'react-native-gesture-handler';
+import TabNavigation from './rsc/TabNavigator/TabNavigation';
+
 const Stack = createNativeStackNavigator();
+
 function RootStack() {
   return (
-    <Stack.Navigator
-      initialRouteName="Registration"
-      screenOptions={{
-        headerStyle: { backgroundColor: 'green' }, 
-        presentation: "formSheet",
-      }}
+    <Stack.Navigator initialRouteName="Navigation"
+      screenOptions={{headerShown:false}}
     >
-     <Stack.Screen name="Registration" component={RegistrationScreen} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
-    </Stack.Navigator>
+     <Stack.Screen name="Navigation" component={TabNavigation} />
+     </Stack.Navigator>
   );
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <RootStack />/
+      <RootStack />
     </NavigationContainer>
   );
 }
