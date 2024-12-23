@@ -1,25 +1,14 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailsScreen from './rsc/Screens/DetailsScreen';
-import TabNavigation from './rsc/TabNavigator/TabNavigation';
+import { View, Text } from 'react-native'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import StackNavigation from './rsc/navigation'
 
-const Stack = createNativeStackNavigator();
-
-function RootStack() {
+const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Navigation"
-      screenOptions={{headerShown:false}}
-    >
-     <Stack.Screen name="Navigation" component={TabNavigation} />
-     </Stack.Navigator>
-  );
+   <NavigationContainer>
+    <StackNavigation/>
+   </NavigationContainer>
+  )
 }
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <RootStack />
-    </NavigationContainer>
-  );
-}
+export default App
