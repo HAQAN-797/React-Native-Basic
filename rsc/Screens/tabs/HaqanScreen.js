@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+// HaqanScreen.js
+import React from 'react';
+import { View, Text } from 'react-native';
 
-const HaqanScreen = () => {
+const HaqanScreen = ({ route }) => {
+  const { message } = route.params || {}; 
+
   return (
     <View>
-      <Text>HaqanScreen</Text>
+      <Text>Haqan Screen message: {message}</Text>
     </View>
-  )
-}
+  );
+};
 
-export default HaqanScreen
+export default HaqanScreen;

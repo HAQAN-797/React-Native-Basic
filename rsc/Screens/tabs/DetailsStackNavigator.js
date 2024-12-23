@@ -1,9 +1,10 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import DetailsScreen from './DetailsScreen';
+import HaqanScreen from './HaqanScreen';
 
  // Import the new Haqan screen
-import DetailsScreen from './HaqanScreen';
-import HaqanScreen from './HaqanScreen';
+
 
 const DetailsStack = createNativeStackNavigator();
 

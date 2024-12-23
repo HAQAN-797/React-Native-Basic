@@ -1,12 +1,20 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+// ProfileScreen.js
+import React from 'react';
+import { View, Text, Button } from 'react-native';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
+  const message = "Hello from Profile!";
+
+  const navigateToHaqan = () => {
+    navigation.navigate('Haqan', { message });
+  };
+
   return (
     <View>
-      <Text>ProfileScreen</Text>
+      <Text>Profile Screen</Text>
+      <Button title="Go to Haqan" onPress={navigateToHaqan} />
     </View>
-  )
-}
+  );
+};
 
-export default ProfileScreen
+export default ProfileScreen;

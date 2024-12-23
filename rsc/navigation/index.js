@@ -13,23 +13,34 @@ import LoginScreen from '../auth/LoginScreen';
 import IntroScreen from '../Screens/Intro/IntroScreen';
 import DetailsStackNavigator from '../Screens/tabs/DetailsStackNavigator';
 import IntroTabScreen from '../Screens/Intro/IntroTabScreen';
+import HaqanScreen from '../Screens/tabs/HaqanScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 const TabStack = createNativeStackNavigator();
 
-
-const StackNavigation = () => {
+// Main Stack Navigator
+const MainStackNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={SCREENS.LOGINSCREEN} component={LoginScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name={SCREENS.HOMESCREEN} component={TabNavigator} />
-      <Stack.Screen name={SCREENS.INTROSCREEN} component={IntroScreen} />
-
+      <Stack.Screen name={SCREENS.HAQANSCREEN} component={HaqanScreen} />
     </Stack.Navigator>
   );
 };
 
+// Main Stack Navigation
+const StackNavigation = () => {
+  return (
+    <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name={SCREENS.LOGINSCREEN} component={LoginScreen} />
+      <Stack.Screen name={SCREENS.INTROSCREEN} component={IntroScreen} />
+      <Stack.Screen name={SCREENS.HOMESCREEN} component={MainStackNavigator} />
+    </Stack.Navigator>
+  );
+};
+
+// Tab Stack Navigation
 const StackTabNavigation = () => {
   return (
     <TabStack.Navigator initialRouteName={SCREENS.REGISTRATIONSCREEN} screenOptions={{ headerShown: false }}>
@@ -39,6 +50,7 @@ const StackTabNavigation = () => {
   );
 };
 
+// Tab Navigator
 const TabNavigator = () => {
   return (
     <Tab.Navigator
@@ -51,7 +63,6 @@ const TabNavigator = () => {
         tabBarInactiveTintColor: 'gray',
       }}
     >
-      
       <Tab.Screen
         name={SCREENS.REGISTRATIONSCREEN}
         component={StackTabNavigation}
@@ -62,16 +73,15 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-  name={SCREENS.DETAILSCREEN}
-  component={DetailsStackNavigator}
-  options={{
-    tabBarStyle: { display: 'none' }, // Ensure the tab bar is hidden
-    tabBarIcon: ({ color }) => (
-      <MaterialCommunityIcons name="account-details-outline" size={25} color={color} />
-    ),
-  }}
-/>
-
+        name={SCREENS.DETAILSCREEN}
+        component={DetailsStackNavigator}
+        options={{
+          tabBarStyle: { display: 'none' }, // Ensure the tab bar is hidden
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account-details-outline" size={25} color={color} />
+          ),
+        }}
+      />
       <Tab.Screen
         name={SCREENS.PROFILESCREEN}
         component={ProfileScreen}
@@ -83,6 +93,7 @@ const TabNavigator = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   tabBarStyle: {
     backgroundColor: 'white',
@@ -94,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StackNavigation; // Export both StackNavigation and TabNavigator if required
+export default StackNavigation; // Export the main StackNavigation

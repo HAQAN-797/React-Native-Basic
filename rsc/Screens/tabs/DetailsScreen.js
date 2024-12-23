@@ -10,7 +10,7 @@ const DetailsScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('Haqan')} // Navigate to the Haqan screen
       />
     </View>
-  );
+  );  ` `
 };
 
 export default DetailsScreen;

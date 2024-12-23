@@ -7,8 +7,8 @@ const SCREENS = {
     LOGINSCREEN:'Login',
     SIGNUPSCREEN:'Signup',
     INTROSCREEN:'Intro',
-    INTROSCREENTAB: 'IntroTab'
-    
+    INTROSCREENTAB: 'IntroTab',
+    HAQANSCREEN:'Haqan',
   };
   
   export default SCREENS;
